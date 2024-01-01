@@ -1,6 +1,6 @@
 {
 	"id": "latexocr",
-	"name": "Obsidian LaTeX-OCR",
+	"name": "LaTeX-OCR",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
 	"description": "Run LaTeX-OCR if it is installed locally.",
