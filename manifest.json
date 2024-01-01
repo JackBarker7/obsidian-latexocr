@@ -1,0 +1,10 @@
+{
+	"id": "latexocr",
+	"name": "latexocr",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Simple plugin to run latexocr if it is installed",
+	"author": "Jack Barker",
+	"authorUrl": "https://github.com/JackBarker7",
+	"isDesktopOnly": true
+}
