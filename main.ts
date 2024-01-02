@@ -25,7 +25,7 @@ export default class Latexocr extends Plugin {
 
         // Add command
         this.addCommand({
-            id: 'latexocr',
+            id: 'run_latexocr',
             name: 'Run latexocr',
             callback: () => {
                 this.run_latexocr();
@@ -73,12 +73,13 @@ export default class Latexocr extends Plugin {
     async setStatusBarText() {
 
         // If we are showing status bar text, update it as appropriate
+        let statusBarText = '';
         if (this.settings.statusBarVisible) {
             if (this.isLatexocrRunning) {
-                var statusBarText = 'latexocr running';
+                statusBarText = 'latexocr running';
             }
             else {
-                var statusBarText = 'latexocr not running';
+                statusBarText = 'latexocr not running';
             }
             this.statusBarTextElement.setText(statusBarText);
         }
