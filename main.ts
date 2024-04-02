@@ -12,17 +12,20 @@ const DEFAULT_SETTINGS: LatexocrSettings = {
 
 export default class Latexocr extends Plugin {
     settings: LatexocrSettings;
-    isLatexocrRunning: boolean;
+    numWindows: number; // count of latexocr windows open
     statusBarTextElement: HTMLElement;
 
     async onload() {
         await this.loadSettings();
 
         // add status bar text
-        this.statusBarTextElement = this.addStatusBarItem();
-        this.statusBarTextElement.setText('latexocr not running');
-        this.isLatexocrRunning = false;
-
+        if (this.settings.statusBarVisible) {
+            this.statusBarTextElement = this.addStatusBarItem();
+            this.statusBarTextElement.setText('latexocr not running');
+        }
+        this.numWindows = 0;
+        
+        
         // Add command
         this.addCommand({
             id: 'run_latexocr',
@@ -60,12 +63,12 @@ export default class Latexocr extends Plugin {
         const latexocr_process = spawn("latexocr");
 
         new Notice("latexocr running");
-        this.isLatexocrRunning = true;
+        this.numWindows += 1;
         this.setStatusBarText();
 
         latexocr_process.on("close", () => {
             new Notice(`latexocr closed`);
-            this.isLatexocrRunning = false;
+            this.numWindows -= 1;
             this.setStatusBarText();
         });
     }
@@ -75,7 +78,7 @@ export default class Latexocr extends Plugin {
         // If we are showing status bar text, update it as appropriate
         let statusBarText = '';
         if (this.settings.statusBarVisible) {
-            if (this.isLatexocrRunning) {
+            if (this.numWindows > 0) {
                 statusBarText = 'latexocr running';
             }
             else {
