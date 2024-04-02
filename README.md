@@ -1,6 +1,6 @@
 # obsidian-latexocr
 
-A simple [Obsidian](https://obsidian.md/) plugin to run [LaTeX-OCR](https://github.com/lukas-blecher/LaTeX-OCR) if it is installed locally.
+A simple [Obsidian](https://obsidian.md/) plugin to run [LaTeX-OCR](https://github.com/lukas-blecher/LaTeX-OCR) if it is installed locally. This allows equations compiled by $\LaTeX$ from an image to be converted to raw $\LaTeX$ code that can then be used in a markdown file.
 
 # Features
 
